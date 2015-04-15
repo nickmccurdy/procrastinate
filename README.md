@@ -1,4 +1,6 @@
 # Procrastinate
+[![Build Status](https://travis-ci.org/nicolasmccurdy/procrastinate.svg?branch=master)](https://travis-ci.org/nicolasmccurdy/procrastinate)
+
 Quickly create pending specs for your favorite test frameworks.
 
 ## Example
