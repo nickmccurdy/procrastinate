@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/nicolasmccurdy/procrastinate/issues"
   },
-  "homepage": "https://github.com/nicolasmccurdy/procrastinate"
+  "homepage": "https://github.com/nicolasmccurdy/procrastinate",
+  "devDependencies": {
+    "mocha": "^2.2.4"
+  }
 }
