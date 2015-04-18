@@ -2,7 +2,7 @@ var assert = require('assert');
 var fs = require('fs');
 var procrastinate = require('..');
 
-describe('Procrastinate', function () {
+xdescribe('Procrastinate', function () {
   context('with an empty input', function () {
     it('returns an empty string', function () {
       assert.equal(procrastinate(''), '');
