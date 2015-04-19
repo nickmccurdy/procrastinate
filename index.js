@@ -21,7 +21,7 @@ function format(line, type) {
 }
 
 function unindent(line) {
-  return line.replace(/^  /, '');
+  return line.replace(/^ {2}/, '');
 }
 
 function getIndentLength(line) {
