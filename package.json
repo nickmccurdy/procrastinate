@@ -2,24 +2,22 @@
   "name": "procrastinate",
   "version": "0.1.0",
   "description": "Quickly create pending specs for your favorite test frameworks.",
-  "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nicolasmccurdy/procrastinate"
-  },
+  "repository": "nicolasmccurdy/procrastinate",
   "keywords": [
     "test",
     "bdd",
     "tdd"
   ],
-  "author": "Nicolas McCurdy <thenickperson@gmail.com> (http://nicolasmccurdy.com/)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/nicolasmccurdy/procrastinate/issues"
+  "author": {
+    "name": "Nicolas McCurdy",
+    "email": "thenickperson@gmail.com",
+    "url": "http://nicolasmccurdy.com/"
   },
+  "license": "MIT",
+  "bugs": "https://github.com/nicolasmccurdy/procrastinate/issues",
   "homepage": "https://github.com/nicolasmccurdy/procrastinate",
   "devDependencies": {
     "mocha": "^2.2.4"
