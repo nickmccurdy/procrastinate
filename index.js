@@ -4,7 +4,6 @@ var util = require('util');
 var mochaFormatter = formatters.mocha;
 
 function format(line, type) {
-  // var match = line.replace(, "$1describe('$2', function () {");
   var matches = /^((?:  )*)(\S.*)$/.exec(line);
   var whitespace = matches[1];
   var text = matches[2];
