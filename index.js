@@ -7,11 +7,21 @@ var mochaFormatter = {
 };
 
 function format(line, type) {
+  // var match = line.replace(, "$1describe('$2', function () {");
+  var matches = /^((?:  )*)(\S.*)$/.exec(line);
+  var whitespace = matches[1];
+  var text = matches[2];
+
   if (type === 'end') {
-    return mochaFormatter.end;
+    var newText = mochaFormatter.end;
   } else {
-    return util.format(mochaFormatter[type], line.trim());
+    var newText = util.format(mochaFormatter[type], text);
   }
+  return whitespace + newText;
+}
+
+function unindent(line) {
+  return line.replace(/^  /, '');
 }
 
 function getIndentLength(line) {
@@ -34,6 +44,7 @@ module.exports = function (input) {
       outputLines.push(format(line, 'test'));
       if (indentLength > nextIndentLength) {
         for (var i = 0; i < indentLength - nextIndentLength; i++) {
+          line = unindent(line);
           outputLines.push(format(line, 'end'));
         }
       }
