@@ -3,5 +3,10 @@
     "suite": "describe('%s', function () {",
     "test": "it('%s');",
     "end": "});"
+  },
+  "rspec": {
+    "suite": "describe '%s' do",
+    "test": "it '%s'",
+    "end": "end"
   }
 }

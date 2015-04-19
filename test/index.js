@@ -9,13 +9,22 @@ describe('Procrastinate', function () {
     });
   });
 
+  var fileOptions = { encoding: 'utf-8' };
+  var input = fs.readFileSync('test/data/input.txt', fileOptions);
+
   context('with an input representing pending Mocha specs', function () {
-    var fileOptions = { encoding: 'utf-8' };
-    var input  = fs.readFileSync('test/data/input.txt', fileOptions);
-    var output = fs.readFileSync('test/data/output.js', fileOptions);
+    var output = fs.readFileSync('test/data/mocha_output.js', fileOptions);
 
     it('returns pending Mocha specs', function () {
       assert.equal(procrastinate('mocha', input), output);
+    });
+  });
+
+  context('with an input representing pending RSpec specs', function () {
+    var output = fs.readFileSync('test/data/rspec_output.rb', fileOptions);
+
+    it('returns pending RSpec specs', function () {
+      assert.equal(procrastinate('rspec', input), output);
     });
   });
 });
