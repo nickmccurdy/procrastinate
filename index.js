@@ -1,7 +1,15 @@
 var formatters = require('./formatters');
 var util = require('util');
 
+function validateFormatter(formatter) {
+  if (procrastinate.formatters.indexOf(formatter) === -1) {
+    throw new Error('Invalid formatter ' + formatter);
+  }
+}
+
 function format(formatter, line, type) {
+  validateFormatter(formatter);
+
   var matches = /^((?:  )*)(\S.*)$/.exec(line);
   var whitespace = matches[1];
   var text = matches[2];
@@ -23,6 +31,8 @@ function getIndentLength(line) {
 }
 
 function procrastinate(formatter, input) {
+  validateFormatter(formatter);
+
   var newline = '\n';
   var inputLines = input.split(newline);
   var outputLines = [];

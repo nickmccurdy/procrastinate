@@ -27,6 +27,14 @@ describe('procrastinate()', function () {
       assert.equal(procrastinate('rspec', input), output);
     });
   });
+
+  context('with an invalid formatter', function () {
+    it('throws an Error', function () {
+      assert.throws(function () {
+        procrastinate('notathinglol', '');
+      }, Error);
+    });
+  });
 });
 
 describe('procrastinate.formatters', function () {
