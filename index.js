@@ -1,10 +1,7 @@
+var formatters = require('./formatters');
 var util = require('util');
 
-var mochaFormatter = {
-  suite: "describe('%s', function () {",
-  test:  "it('%s');",
-  end:   '});'
-};
+var mochaFormatter = formatters.mocha;
 
 function format(line, type) {
   // var match = line.replace(, "$1describe('$2', function () {");

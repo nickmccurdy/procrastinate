@@ -1,0 +1,7 @@
+{
+  "mocha": {
+    "suite": "describe('%s', function () {",
+    "test": "it('%s');",
+    "end": "});"
+  }
+}
