@@ -2,7 +2,7 @@ var assert = require('assert');
 var fs = require('fs');
 var procrastinate = require('..');
 
-describe('Procrastinate', function () {
+describe('procrastinate()', function () {
   context('with an empty input', function () {
     it('returns an empty string', function () {
       assert.equal(procrastinate('mocha', ''), '');
@@ -25,6 +25,17 @@ describe('Procrastinate', function () {
 
     it('returns pending RSpec specs', function () {
       assert.equal(procrastinate('rspec', input), output);
+    });
+  });
+});
+
+describe('procrastinate.formatters', function () {
+  it('is a list of Strings representing supported formatters', function () {
+    assert(Array.isArray(procrastinate.formatters));
+
+    procrastinate.formatters.forEach(function (formatter) {
+      assert.equal(typeof formatter, 'string');
+      assert(/^\w+$/.test(formatter));
     });
   });
 });

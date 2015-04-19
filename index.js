@@ -22,7 +22,7 @@ function getIndentLength(line) {
   return (line.match(/ {2}/g) || []).length;
 }
 
-module.exports = function (formatter, input) {
+function procrastinate(formatter, input) {
   var newline = '\n';
   var inputLines = input.split(newline);
   var outputLines = [];
@@ -48,4 +48,8 @@ module.exports = function (formatter, input) {
   });
 
   return outputLines.join(newline);
-};
+}
+
+procrastinate.formatters = Object.keys(formatters);
+
+module.exports = procrastinate;
