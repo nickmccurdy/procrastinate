@@ -7,7 +7,11 @@ var mochaFormatter = {
 };
 
 function format(line, type) {
-  return util.format(mochaFormatter[type], line.trim());
+  if (type === 'end') {
+    return mochaFormatter.end;
+  } else {
+    return util.format(mochaFormatter[type], line.trim());
+  }
 }
 
 function getIndentLength(line) {
@@ -30,7 +34,7 @@ module.exports = function (input) {
       outputLines.push(format(line, 'test'));
       if (indentLength > nextIndentLength) {
         for (var i = 0; i < indentLength - nextIndentLength; i++) {
-          outputLines.push(mochaFormatter.end);
+          outputLines.push(format(line, 'end'));
         }
       }
     } else {
