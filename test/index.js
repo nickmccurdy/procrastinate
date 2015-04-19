@@ -5,7 +5,7 @@ var procrastinate = require('..');
 describe('Procrastinate', function () {
   context('with an empty input', function () {
     it('returns an empty string', function () {
-      assert.equal(procrastinate(''), '');
+      assert.equal(procrastinate('mocha', ''), '');
     });
   });
 
@@ -15,7 +15,7 @@ describe('Procrastinate', function () {
     var output = fs.readFileSync('test/data/output.js', fileOptions);
 
     it('returns pending Mocha specs', function () {
-      assert.equal(procrastinate(input), output);
+      assert.equal(procrastinate('mocha', input), output);
     });
   });
 });

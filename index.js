@@ -1,17 +1,15 @@
 var formatters = require('./formatters');
 var util = require('util');
 
-var mochaFormatter = formatters.mocha;
-
-function format(line, type) {
+function format(formatter, line, type) {
   var matches = /^((?:  )*)(\S.*)$/.exec(line);
   var whitespace = matches[1];
   var text = matches[2];
 
   if (type === 'end') {
-    var newText = mochaFormatter.end;
+    var newText = formatters[formatter].end;
   } else {
-    var newText = util.format(mochaFormatter[type], text);
+    var newText = util.format(formatters[formatter][type], text);
   }
   return whitespace + newText;
 }
@@ -24,7 +22,7 @@ function getIndentLength(line) {
   return (line.match(/ {2}/g) || []).length;
 }
 
-module.exports = function (input) {
+module.exports = function (formatter, input) {
   var newline = '\n';
   var inputLines = input.split(newline);
   var outputLines = [];
@@ -37,15 +35,15 @@ module.exports = function (input) {
     if (line.length === 0) {
       outputLines.push('');
     } else if (nextLine === undefined || indentLength >= nextIndentLength) {
-      outputLines.push(format(line, 'test'));
+      outputLines.push(format(formatter, line, 'test'));
       if (indentLength > nextIndentLength) {
         for (var i = 0; i < indentLength - nextIndentLength; i++) {
           line = unindent(line);
-          outputLines.push(format(line, 'end'));
+          outputLines.push(format(formatter, line, 'end'));
         }
       }
     } else {
-      outputLines.push(format(line, 'suite'));
+      outputLines.push(format(formatter, line, 'suite'));
     }
   });
 
