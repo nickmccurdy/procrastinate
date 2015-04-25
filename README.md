@@ -1,5 +1,8 @@
 # Procrastinate
+[![NPM Version](http://img.shields.io/npm/v/procrastinate.svg?style=flat)](https://www.npmjs.org/package/procrastinate)
 [![Build Status](https://travis-ci.org/nicolasmccurdy/procrastinate.svg?branch=master)](https://travis-ci.org/nicolasmccurdy/procrastinate)
+[![Dependency Status](https://gemnasium.com/nicolasmccurdy/procrastinate.svg)](https://gemnasium.com/nicolasmccurdy/procrastinate)
+[![Code Climate](https://codeclimate.com/github/nicolasmccurdy/procrastinate/badges/gpa.svg)](https://codeclimate.com/github/nicolasmccurdy/procrastinate)
 
 Quickly create pending specs for your favorite test frameworks.
 
