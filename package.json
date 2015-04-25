@@ -5,6 +5,7 @@
   "scripts": {
     "test": "mocha"
   },
+  "bin": "cli.js",
   "repository": "nicolasmccurdy/procrastinate",
   "keywords": [
     "test",
@@ -19,6 +20,9 @@
   "license": "MIT",
   "bugs": "https://github.com/nicolasmccurdy/procrastinate/issues",
   "homepage": "https://github.com/nicolasmccurdy/procrastinate",
+  "dependencies": {
+    "commander": "^2.8.0"
+  },
   "devDependencies": {
     "mocha": "^2.2.4"
   }
