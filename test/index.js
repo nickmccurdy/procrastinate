@@ -47,3 +47,19 @@ describe('procrastinate.formatters', function () {
     });
   });
 });
+
+describe('procrastinate.validateFormatter()', function () {
+  context('with a valid formatter', function () {
+    it('does nothing', function () {
+      procrastinate.validateFormatter('mocha');
+    });
+  });
+
+  context('with an invalid formatter', function () {
+    it('throws an Error', function () {
+      assert.throws(function () {
+        procrastinate.validateFormatter('notathinglol');
+      }, Error);
+    });
+  });
+});

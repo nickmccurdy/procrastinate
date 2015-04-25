@@ -61,5 +61,6 @@ function procrastinate(formatter, input) {
 }
 
 procrastinate.formatters = Object.keys(formatters);
+procrastinate.validateFormatter = validateFormatter;
 
 module.exports = procrastinate;
