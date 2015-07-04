@@ -2,10 +2,10 @@ var assert = require('assert');
 var fs = require('fs');
 var procrastinate = require('..');
 
-describe('procrastinate()', function () {
+describe('procrastinate.convert()', function () {
   context('with an empty input', function () {
     it('returns an empty string', function () {
-      assert.equal(procrastinate('mocha', ''), '');
+      assert.equal(procrastinate.convert('mocha', ''), '');
     });
   });
 
@@ -16,7 +16,7 @@ describe('procrastinate()', function () {
     var output = fs.readFileSync('test/data/mocha_output.js', fileOptions);
 
     it('returns pending Mocha specs', function () {
-      assert.equal(procrastinate('mocha', input), output);
+      assert.equal(procrastinate.convert('mocha', input), output);
     });
   });
 
@@ -24,14 +24,14 @@ describe('procrastinate()', function () {
     var output = fs.readFileSync('test/data/rspec_output.rb', fileOptions);
 
     it('returns pending RSpec specs', function () {
-      assert.equal(procrastinate('rspec', input), output);
+      assert.equal(procrastinate.convert('rspec', input), output);
     });
   });
 
   context('with an invalid formatter', function () {
     it('throws an Error', function () {
       assert.throws(function () {
-        procrastinate('notathinglol', '');
+        procrastinate.convert('notathinglol', '');
       }, Error);
     });
   });

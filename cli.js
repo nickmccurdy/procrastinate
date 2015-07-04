@@ -16,7 +16,7 @@ if (program.args.length === 1) {
   procrastinate.validateFormatter(formatter);
 
   var input = fs.readFileSync('/dev/stdin').toString();
-  console.log(procrastinate(formatter, input));
+  console.log(procrastinate.convert(formatter, input));
 } else {
   program.help();
 }
