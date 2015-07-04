@@ -3,7 +3,7 @@ var fs = require('fs');
 var procrastinate = require('..');
 
 describe('procrastinate', function () {
-  describe('#convert()', function () {
+  describe('.convert()', function () {
     context('with an empty input', function () {
       it('returns an empty string', function () {
         assert.equal(procrastinate.convert('mocha', ''), '');
@@ -38,7 +38,7 @@ describe('procrastinate', function () {
     });
   });
 
-  describe('#formatters', function () {
+  describe('.formatters', function () {
     it('is a list of Strings representing supported formatters', function () {
       assert(Array.isArray(procrastinate.formatters));
 
@@ -49,7 +49,7 @@ describe('procrastinate', function () {
     });
   });
 
-  describe('#validateFormatter()', function () {
+  describe('.validateFormatter()', function () {
     context('with a valid formatter', function () {
       it('does nothing', function () {
         procrastinate.validateFormatter('mocha');
