@@ -38,6 +38,62 @@ describe('procrastinate', function () {
     });
   });
 
+  describe('.format()', function () {
+    context('with an invalid formatter', function () {
+      it('throws an Error');
+    });
+
+    context('with a line of type "suite"', function () {
+      context('with no indents or text', function () {
+        it('returns null');
+      });
+
+      context('with no indents', function () {
+        it('returns the start of a suite');
+      });
+
+      context('with one indent', function () {
+        it('returns the start of a suite with one indent');
+      });
+
+      context('with two indents', function () {
+        it('returns the start of a suite with two indents');
+      });
+    });
+
+    context('with a line of type "test"', function () {
+      context('with no indents or text', function () {
+        it('returns null');
+      });
+
+      context('with no indents', function () {
+        it('returns the start of a test');
+      });
+
+      context('with one indent', function () {
+        it('returns the start of a test with one indent');
+      });
+
+      context('with two indents', function () {
+        it('returns the start of a test with two indents');
+      });
+    });
+
+    context('with a line of type "end"', function () {
+      context('with no indents', function () {
+        it('returns the end of a suite or test');
+      });
+
+      context('with one indent', function () {
+        it('returns the end of a suite or test with one indent');
+      });
+
+      context('with two indents', function () {
+        it('returns the end of a suite or test with two indents');
+      });
+    });
+  });
+
   describe('.formatters', function () {
     it('is a list of Strings representing supported formatters', function () {
       assert(Array.isArray(procrastinate.formatters));
