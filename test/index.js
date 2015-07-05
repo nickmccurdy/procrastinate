@@ -49,6 +49,58 @@ describe('procrastinate', function () {
     });
   });
 
+  describe('.getIndentLength()', function () {
+    context('given an empty line', function () {
+      it('returns 0', function () {
+        assert.equal(procrastinate.getIndentLength(''), 0);
+      });
+    });
+
+    context('given a line with no indents', function () {
+      it('returns 0', function () {
+        assert.equal(procrastinate.getIndentLength('example'), 0);
+      });
+    });
+
+    context('given a line with one indent', function () {
+      it('returns 1', function () {
+        assert.equal(procrastinate.getIndentLength('  example'), 1);
+      });
+    });
+
+    context('given a line with two indents', function () {
+      it('returns 2', function () {
+        assert.equal(procrastinate.getIndentLength('    example'), 2);
+      });
+    });
+  });
+
+  describe('.unindent()', function () {
+    context('given an empty line', function () {
+      it('returns an empty String', function () {
+        assert.equal(procrastinate.unindent(''), '');
+      });
+    });
+
+    context('given a line with no indents', function () {
+      it('returns the same line', function () {
+        assert.equal(procrastinate.unindent('example'), 'example');
+      });
+    });
+
+    context('given a line with one indent', function () {
+      it('returns the same line with no indents', function () {
+        assert.equal(procrastinate.unindent('  example'), 'example');
+      });
+    });
+
+    context('given a line with two indents', function () {
+      it('returns the same line with only one indent', function () {
+        assert.equal(procrastinate.unindent('    example'), '  example');
+      });
+    });
+  });
+
   describe('.validateFormatter()', function () {
     context('with a valid formatter', function () {
       it('does nothing', function () {
