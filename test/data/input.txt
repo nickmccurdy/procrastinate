@@ -1,3 +1,7 @@
 Array
   #indexOf()
-    should return -1 when the value is not present
+    when not present
+      should not throw an error
+      should return -1
+    when present
+      should return the index where the element first appears in the array
