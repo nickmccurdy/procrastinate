@@ -29,6 +29,13 @@ describe('procrastinate', function () {
       });
     });
 
+    xcontext('with an input containing empty lines', function () {
+      it('returns pending specs with empty lines removed', function () {
+        assert.equal(procrastinate.convert('rspec', 'does this\n\ndoes that'),
+                     "it 'does this'\nit 'does that'");
+      });
+    });
+
     context('with an invalid formatter', function () {
       it('throws an Error', function () {
         assert.throws(function () {
