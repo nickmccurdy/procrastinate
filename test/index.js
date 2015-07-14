@@ -40,56 +40,91 @@ describe('procrastinate', function () {
 
   describe('.format()', function () {
     context('with an invalid formatter', function () {
-      it('throws an Error');
+      it('throws an Error', function () {
+        assert.throws(function () {
+          procrastinate.format('notathinglol', 'example', 'suite');
+        }, Error);
+      });
     });
 
     context('with a line of type "suite"', function () {
-      context('with no indents or text', function () {
-        it('returns null');
+      xcontext('with no indents or text', function () {
+        it('returns null', function () {
+          assert.equal(procrastinate.format('rspec', '', 'suite'), null);
+        });
       });
 
       context('with no indents', function () {
-        it('returns the start of a suite');
+        it('returns the start of a suite', function () {
+          assert.equal(procrastinate.format('rspec', 'example', 'suite'),
+                       "describe 'example' do");
+        });
       });
 
       context('with one indent', function () {
-        it('returns the start of a suite with one indent');
+        it('returns the start of a suite with one indent', function () {
+          assert.equal(procrastinate.format('rspec', '  example', 'suite'),
+                       "  describe 'example' do");
+        });
       });
 
       context('with two indents', function () {
-        it('returns the start of a suite with two indents');
+        it('returns the start of a suite with two indents', function () {
+          assert.equal(procrastinate.format('rspec', '    example', 'suite'),
+                       "    describe 'example' do");
+        });
       });
     });
 
     context('with a line of type "test"', function () {
-      context('with no indents or text', function () {
-        it('returns null');
+      xcontext('with no indents or text', function () {
+        it('returns null', function () {
+          assert.equal(procrastinate.format('rspec', '', 'test'), null);
+        });
       });
 
       context('with no indents', function () {
-        it('returns the start of a test');
+        it('returns the start of a test', function () {
+          assert.equal(procrastinate.format('rspec', 'example', 'test'), "it 'example'");
+        });
       });
 
       context('with one indent', function () {
-        it('returns the start of a test with one indent');
+        it('returns the start of a test with one indent', function () {
+          assert.equal(procrastinate.format('rspec', '  example', 'test'), "  it 'example'");
+        });
       });
 
       context('with two indents', function () {
-        it('returns the start of a test with two indents');
+        it('returns the start of a test with two indents', function () {
+          assert.equal(procrastinate.format('rspec', '    example', 'test'), "    it 'example'");
+        });
       });
     });
 
     context('with a line of type "end"', function () {
+      xcontext('with no indents or text', function () {
+        it('returns null', function () {
+          assert.equal(procrastinate.format('rspec', '', 'end'), null);
+        });
+      });
+
       context('with no indents', function () {
-        it('returns the end of a suite or test');
+        it('returns the end of a suite or test', function () {
+          assert.equal(procrastinate.format('rspec', 'example', 'end'), 'end');
+        });
       });
 
       context('with one indent', function () {
-        it('returns the end of a suite or test with one indent');
+        it('returns the end of a suite or test with one indent', function () {
+          assert.equal(procrastinate.format('rspec', '  example', 'end'), '  end');
+        });
       });
 
       context('with two indents', function () {
-        it('returns the end of a suite or test with two indents');
+        it('returns the end of a suite or test with two indents', function () {
+          assert.equal(procrastinate.format('rspec', '    example', 'end'), '    end');
+        });
       });
     });
   });
