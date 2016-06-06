@@ -179,6 +179,24 @@ describe('procrastinate', function () {
     });
   });
 
+  describe('.parseLine()', function () {
+    context('with no indents or text', function () {
+      it('returns null');
+    });
+
+    context('with no indents', function () {
+      it('returns the start of a test');
+    });
+
+    context('with one indent', function () {
+      it('returns the start of a test with one indent');
+    });
+
+    context('with two indents', function () {
+      it('returns the start of a test with two indents');
+    });
+  });
+
   describe('.unindent()', function () {
     context('given an empty line', function () {
       it('returns an empty String', function () {
