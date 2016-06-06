@@ -7,19 +7,27 @@ function validateFormatter(formatter) {
   }
 }
 
+function parseLine(line) {
+  var matches = /^((?:  )*)(\S.*)$/.exec(line);
+
+  return {
+    indent: matches[1],
+    content: matches[2]
+  };
+}
+
 function format(formatter, line, type) {
   validateFormatter(formatter);
 
-  var matches = /^((?:  )*)(\S.*)$/.exec(line);
-  var whitespace = matches[1];
-  var text = matches[2];
+  var parsed = parseLine(line);
 
   if (type === 'end') {
     var newText = formatters[formatter].end;
   } else {
-    var newText = util.format(formatters[formatter][type], text);
+    var newText = util.format(formatters[formatter][type], parsed.content);
   }
-  return whitespace + newText;
+
+  return parsed.indent + newText;
 }
 
 function unindent(line) {
