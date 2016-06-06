@@ -1,41 +1,41 @@
 var formatters = require('./formatters');
 var util = require('util');
 
-var procrastinate = {
+module.exports = {
   convert: function (formatter, input) {
-    procrastinate.validateFormatter(formatter);
+    this.validateFormatter(formatter);
 
     var newline = '\n';
     var inputLines = input.split(newline);
     var outputLines = [];
 
     inputLines.forEach(function (line, index) {
-      var indentLength = procrastinate.getIndentLength(line);
+      var indentLength = this.getIndentLength(line);
       var nextLine = inputLines[index + 1];
-      var nextIndentLength = nextLine === undefined ? 0 : procrastinate.getIndentLength(nextLine);
+      var nextIndentLength = nextLine === undefined ? 0 : this.getIndentLength(nextLine);
 
       if (line.length === 0) {
         outputLines.push('');
       } else if (nextLine === undefined || indentLength >= nextIndentLength) {
-        outputLines.push(procrastinate.format(formatter, line, 'test'));
+        outputLines.push(this.format(formatter, line, 'test'));
         if (indentLength > nextIndentLength) {
           for (var i = 0; i < indentLength - nextIndentLength; i++) {
-            line = procrastinate.unindent(line);
-            outputLines.push(procrastinate.format(formatter, line, 'end'));
+            line = this.unindent(line);
+            outputLines.push(this.format(formatter, line, 'end'));
           }
         }
       } else {
-        outputLines.push(procrastinate.format(formatter, line, 'suite'));
+        outputLines.push(this.format(formatter, line, 'suite'));
       }
-    });
+    }.bind(this));
 
     return outputLines.join(newline);
   },
 
   format: function (formatter, line, type) {
-    procrastinate.validateFormatter(formatter);
+    this.validateFormatter(formatter);
 
-    var parsed = procrastinate.parseLine(line);
+    var parsed = this.parseLine(line);
 
     if (type === 'end') {
       var newText = formatters[formatter].end;
@@ -66,10 +66,8 @@ var procrastinate = {
   },
 
   validateFormatter: function (formatter) {
-    if (procrastinate.formatters.indexOf(formatter) === -1) {
+    if (this.formatters.indexOf(formatter) === -1) {
       throw new Error('Invalid formatter ' + formatter);
     }
   }
 };
-
-module.exports = procrastinate;
