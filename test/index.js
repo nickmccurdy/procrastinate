@@ -1,5 +1,6 @@
 var assert = require('assert');
 var fs = require('fs');
+var path = require('path');
 var procrastinate = require('..');
 
 describe('procrastinate', function () {
@@ -11,10 +12,15 @@ describe('procrastinate', function () {
     });
 
     var fileOptions = { encoding: 'utf-8' };
-    var input = fs.readFileSync('test/data/input.txt', fileOptions);
+
+    function getData(filename) {
+      return fs.readFileSync(path.join('test/data', filename), fileOptions);
+    }
+
+    var input = getData('input.txt');
 
     context('with an input representing pending Mocha specs', function () {
-      var output = fs.readFileSync('test/data/mocha_output.js', fileOptions);
+      var output = getData('mocha_output.js');
 
       it('returns pending Mocha specs', function () {
         assert.equal(procrastinate.convert('mocha', input), output);
@@ -22,7 +28,7 @@ describe('procrastinate', function () {
     });
 
     context('with an input representing pending RSpec specs', function () {
-      var output = fs.readFileSync('test/data/rspec_output.rb', fileOptions);
+      var output = getData('rspec_output.rb');
 
       it('returns pending RSpec specs', function () {
         assert.equal(procrastinate.convert('rspec', input), output);
