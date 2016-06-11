@@ -36,11 +36,12 @@ module.exports = {
     this.validateFormatter(formatter);
 
     var parsed = this.parseLine(line);
+    var newText;
 
     if (type === 'end') {
-      var newText = formatters[formatter].end;
+      newText = formatters[formatter].end;
     } else {
-      var newText = util.format(formatters[formatter][type], parsed.content);
+      newText = util.format(formatters[formatter][type], parsed.content);
     }
 
     return parsed.indent + newText;
@@ -53,7 +54,7 @@ module.exports = {
   },
 
   parseLine: function (line) {
-    var matches = /^((?:  )*)(\S.*)$/.exec(line);
+    var matches = /^((?: {2})*)(\S.*)$/.exec(line);
 
     return {
       indent: matches[1],

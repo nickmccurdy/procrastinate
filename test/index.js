@@ -1,3 +1,5 @@
+/* eslint-env mocha */
+
 var assert = require('assert');
 var fs = require('fs');
 var path = require('path');
@@ -13,7 +15,7 @@ describe('procrastinate', function () {
 
     var fileOptions = { encoding: 'utf-8' };
 
-    function getData(filename) {
+    function getData (filename) {
       return fs.readFileSync(path.join('test/data', filename), fileOptions);
     }
 
@@ -38,7 +40,7 @@ describe('procrastinate', function () {
     xcontext('with an input containing empty lines', function () {
       it('returns pending specs with empty lines removed', function () {
         assert.equal(procrastinate.convert('rspec', 'does this\n\ndoes that'),
-                     "it 'does this'\nit 'does that'");
+          "it 'does this'\nit 'does that'");
       });
     });
 
@@ -70,21 +72,21 @@ describe('procrastinate', function () {
       context('with no indents', function () {
         it('returns the start of a suite', function () {
           assert.equal(procrastinate.format('rspec', 'example', 'suite'),
-                       "describe 'example' do");
+            "describe 'example' do");
         });
       });
 
       context('with one indent', function () {
         it('returns the start of a suite with one indent', function () {
           assert.equal(procrastinate.format('rspec', '  example', 'suite'),
-                       "  describe 'example' do");
+            "  describe 'example' do");
         });
       });
 
       context('with two indents', function () {
         it('returns the start of a suite with two indents', function () {
           assert.equal(procrastinate.format('rspec', '    example', 'suite'),
-                       "    describe 'example' do");
+            "    describe 'example' do");
         });
       });
     });
