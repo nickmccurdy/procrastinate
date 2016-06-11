@@ -1,3 +1,4 @@
+/* eslint-env mocha */
 var assert = require('assert');
 var fs = require('fs');
 var path = require('path');
@@ -12,7 +13,7 @@ describe('procrastinate()', function () {
 
   var fileOptions = { encoding: 'utf-8' };
 
-  function getData(filename) {
+  function getData (filename) {
     return fs.readFileSync(path.join('test/data', filename), fileOptions);
   }
 

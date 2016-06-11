@@ -1,14 +1,14 @@
 var formatters = require('./formatters');
 var util = require('util');
 
-function validateFormatter(formatter) {
+function validateFormatter (formatter) {
   if (procrastinate.formatters.indexOf(formatter) === -1) {
     throw new Error('Invalid formatter ' + formatter);
   }
 }
 
-function parseLine(line) {
-  var matches = /^((?:  )*)(\S.*)$/.exec(line);
+function parseLine (line) {
+  var matches = /^((?: {2})*)(\S.*)$/.exec(line);
 
   return {
     indent: matches[1],
@@ -16,29 +16,30 @@ function parseLine(line) {
   };
 }
 
-function format(formatter, line, type) {
+function format (formatter, line, type) {
   validateFormatter(formatter);
 
   var parsed = parseLine(line);
+  var newText;
 
   if (type === 'end') {
-    var newText = formatters[formatter].end;
+    newText = formatters[formatter].end;
   } else {
-    var newText = util.format(formatters[formatter][type], parsed.content);
+    newText = util.format(formatters[formatter][type], parsed.content);
   }
 
   return parsed.indent + newText;
 }
 
-function unindent(line) {
+function unindent (line) {
   return line.replace(/^ {2}/, '');
 }
 
-function getIndentLength(line) {
+function getIndentLength (line) {
   return (line.match(/ {2}/g) || []).length;
 }
 
-function procrastinate(formatter, input) {
+function procrastinate (formatter, input) {
   validateFormatter(formatter);
 
   var newline = '\n';
