@@ -1,37 +1,37 @@
 var formatters = require('./formatters');
 var util = require('util');
 
-module.exports = {
-  convert: function (formatter, input) {
-    this.validateFormatter(formatter);
+function procrastinate (formatter, input) {
+  this.validateFormatter(formatter);
 
-    var newline = '\n';
-    var inputLines = input.split(newline);
-    var outputLines = [];
+  var newline = '\n';
+  var inputLines = input.split(newline);
+  var outputLines = [];
 
-    inputLines.forEach(function (line, index) {
-      var indentLength = this.getIndentLength(line);
-      var nextLine = inputLines[index + 1];
-      var nextIndentLength = nextLine === undefined ? 0 : this.getIndentLength(nextLine);
+  inputLines.forEach(function (line, index) {
+    var indentLength = this.getIndentLength(line);
+    var nextLine = inputLines[index + 1];
+    var nextIndentLength = nextLine === undefined ? 0 : this.getIndentLength(nextLine);
 
-      if (line.length === 0) {
-        outputLines.push('');
-      } else if (nextLine === undefined || indentLength >= nextIndentLength) {
-        outputLines.push(this.format(formatter, line, 'test'));
-        if (indentLength > nextIndentLength) {
-          for (var i = 0; i < indentLength - nextIndentLength; i++) {
-            line = this.unindent(line);
-            outputLines.push(this.format(formatter, line, 'end'));
-          }
+    if (line.length === 0) {
+      outputLines.push('');
+    } else if (nextLine === undefined || indentLength >= nextIndentLength) {
+      outputLines.push(this.format(formatter, line, 'test'));
+      if (indentLength > nextIndentLength) {
+        for (var i = 0; i < indentLength - nextIndentLength; i++) {
+          line = this.unindent(line);
+          outputLines.push(this.format(formatter, line, 'end'));
         }
-      } else {
-        outputLines.push(this.format(formatter, line, 'suite'));
       }
-    }.bind(this));
+    } else {
+      outputLines.push(this.format(formatter, line, 'suite'));
+    }
+  }.bind(this));
 
-    return outputLines.join(newline);
-  },
+  return outputLines.join(newline);
+}
 
+var methods = {
   format: function (formatter, line, type) {
     this.validateFormatter(formatter);
 
@@ -72,3 +72,5 @@ module.exports = {
     }
   }
 };
+
+module.exports = Object.assign(procrastinate.bind(methods), methods);
