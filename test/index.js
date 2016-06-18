@@ -183,19 +183,36 @@ describe('procrastinate', function () {
 
   describe('.parseLine()', function () {
     context('with no indents or text', function () {
-      it('returns null');
+      it('returns null', function () {
+        assert.deepStrictEqual(procrastinate.parseLine(''), null);
+      });
     });
 
     context('with no indents', function () {
-      it('returns the start of a test');
+      it('returns the start of a test', function () {
+        assert.deepStrictEqual(procrastinate.parseLine('content'), {
+          indent: '',
+          content: 'content'
+        });
+      });
     });
 
     context('with one indent', function () {
-      it('returns the start of a test with one indent');
+      it('returns the start of a test with one indent', function () {
+        assert.deepStrictEqual(procrastinate.parseLine('  content'), {
+          indent: '  ',
+          content: 'content'
+        });
+      });
     });
 
     context('with two indents', function () {
-      it('returns the start of a test with two indents');
+      it('returns the start of a test with two indents', function () {
+        assert.deepStrictEqual(procrastinate.parseLine('    content'), {
+          indent: '    ',
+          content: 'content'
+        });
+      });
     });
   });
 

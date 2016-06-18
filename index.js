@@ -56,7 +56,7 @@ var methods = {
   parseLine: function (line) {
     var matches = /^((?: {2})*)(\S.*)$/.exec(line);
 
-    return {
+    return matches && {
       indent: matches[1],
       content: matches[2]
     };
