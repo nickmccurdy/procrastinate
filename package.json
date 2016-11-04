@@ -6,27 +6,27 @@
     "test": "semistandard && istanbul cover _mocha"
   },
   "bin": "cli.js",
-  "repository": "nicolasmccurdy/procrastinate",
+  "repository": "nickmccurdy/procrastinate",
   "keywords": [
     "test",
     "bdd",
     "tdd"
   ],
   "author": {
-    "name": "Nicolas McCurdy",
+    "name": "Nick McCurdy",
     "email": "thenickperson@gmail.com",
-    "url": "http://nicolasmccurdy.com/"
+    "url": "http://nickmccurdy.com/"
   },
   "license": "MIT",
-  "bugs": "https://github.com/nicolasmccurdy/procrastinate/issues",
-  "homepage": "https://github.com/nicolasmccurdy/procrastinate",
+  "bugs": "https://github.com/nickmccurdy/procrastinate/issues",
+  "homepage": "https://github.com/nickmccurdy/procrastinate",
   "dependencies": {
     "commander": "^2.8.0"
   },
   "devDependencies": {
     "istanbul": "^0.4.5",
     "mocha": "^3.1.0",
-    "semistandard": "^9.0.0"
+    "semistandard": "^9.1.0"
   },
   "semistandard": {
     "ignore": [
