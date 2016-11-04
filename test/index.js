@@ -5,33 +5,24 @@ var path = require('path');
 var procrastinate = require('..');
 
 describe('procrastinate()', function () {
-  context('with an empty input', function () {
-    it('returns an empty string', function () {
-      assert.equal(procrastinate('mocha', ''), '');
-    });
-  });
-
-  var fileOptions = { encoding: 'utf-8' };
-
   function getData (filename) {
-    return fs.readFileSync(path.join('test/data', filename), fileOptions);
+    var file = path.join('test/data', filename);
+    return fs.readFileSync(file, { encoding: 'utf-8' });
   }
 
   var input = getData('input.txt');
 
-  context('with an input representing pending Mocha specs', function () {
-    var output = getData('mocha_output.js');
-
-    it('returns pending Mocha specs', function () {
-      assert.equal(procrastinate('mocha', input), output);
-    });
+  it('returns pending Mocha specs', function () {
+    assert.equal(procrastinate('mocha', input), getData('mocha_output.js'));
   });
 
-  context('with an input representing pending RSpec specs', function () {
-    var output = getData('rspec_output.rb');
+  it('returns pending RSpec specs', function () {
+    assert.equal(procrastinate('rspec', input), getData('rspec_output.rb'));
+  });
 
-    it('returns pending RSpec specs', function () {
-      assert.equal(procrastinate('rspec', input), output);
+  context('with an empty input', function () {
+    it('returns an empty string', function () {
+      assert.equal(procrastinate('mocha', ''), '');
     });
   });
 
