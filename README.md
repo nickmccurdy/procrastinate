@@ -18,7 +18,7 @@ Array
 
 ### Usage
 ```sh
-procrastinate jest < test.js
+npx procrastinate jest < test.js
 ```
 `jest` can be replaced with any [supported formatter](#supported-formatters)
 
