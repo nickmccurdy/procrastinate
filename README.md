@@ -18,11 +18,11 @@ Array
 ```
 
 ### Output
-139 characters of pending Mocha specs
+144 characters of pending Jest specs
 ```javascript
 describe('Array', function () {
   describe('#indexOf()', function () {
-    it('should return -1 when the value is not present');
+    it.todo('should return -1 when the value is not present');
   });
 });
 ```

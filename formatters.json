@@ -1,4 +1,9 @@
 {
+  "jest": {
+    "suite": "describe('%s', function () {",
+    "test": "it.todo('%s');",
+    "end": "});"
+  }, 
   "mocha": {
     "suite": "describe('%s', function () {",
     "test": "it('%s');",

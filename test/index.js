@@ -12,6 +12,10 @@ describe('procrastinate()', function () {
 
   var input = getData('input.txt');
 
+  it('returns pending Jest specs', function () {
+    assert.equal(procrastinate('jest', input), getData('jest_output.js'));
+  });
+
   it('returns pending Mocha specs', function () {
     assert.equal(procrastinate('mocha', input), getData('mocha_output.js'));
   });
