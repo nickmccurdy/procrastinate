@@ -17,7 +17,10 @@ Array
 ```
 
 ### Usage
-`procrastinate jest < test.js`
+```sh
+procrastinate jest < test.js
+```
+`jest` can be replaced with any [supported formatter](#supported-formatters)
 
 ### Output
 144 characters of pending Jest specs
@@ -28,3 +31,8 @@ describe('Array', function () {
   });
 });
 ```
+
+## Supported formatters
+- [`jest`](https://jestjs.io/)
+- [`mocha`](https://mochajs.org/)
+- [`rspec`](https://rspec.info/)
