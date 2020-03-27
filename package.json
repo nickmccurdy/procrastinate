@@ -1,6 +1,6 @@
 {
   "name": "procrastinate",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Quickly create pending specs for your favorite test frameworks.",
   "scripts": {
     "test": "semistandard && istanbul cover _mocha"
