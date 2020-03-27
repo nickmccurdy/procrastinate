@@ -16,6 +16,9 @@ Array
     should return -1 when the value is not present
 ```
 
+### Usage
+`procrastinate jest < test.js`
+
 ### Output
 144 characters of pending Jest specs
 ```javascript
