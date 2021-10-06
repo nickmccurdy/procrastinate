@@ -25,9 +25,9 @@ npx procrastinate jest < test.js
 ### Output
 144 characters of pending Jest specs
 ```javascript
-describe('Array', function () {
-  describe('#indexOf()', function () {
-    it.todo('should return -1 when the value is not present');
+describe('Array', () => {
+  describe('#indexOf()', () => {
+    test.todo('should return -1 when the value is not present');
   });
 });
 ```
