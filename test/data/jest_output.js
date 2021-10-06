@@ -1,11 +1,11 @@
-describe('Array', function () {
-  describe('#indexOf()', function () {
-    describe('when not present', function () {
-      it.todo('should not throw an error');
-      it.todo('should return -1');
+describe('Array', () => {
+  describe('#indexOf()', () => {
+    describe('when not present', () => {
+      test.todo('should not throw an error');
+      test.todo('should return -1');
     });
-    describe('when present', function () {
-      it.todo('should return the index where the element first appears in the array');
+    describe('when present', () => {
+      test.todo('should return the index where the element first appears in the array');
     });
   });
 });

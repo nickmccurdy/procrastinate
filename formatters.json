@@ -1,7 +1,7 @@
 {
   "jest": {
-    "suite": "describe('%s', function () {",
-    "test": "it.todo('%s');",
+    "suite": "describe('%s', () => {",
+    "test": "test.todo('%s');",
     "end": "});"
   }, 
   "mocha": {
